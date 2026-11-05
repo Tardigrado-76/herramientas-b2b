@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  swe-fleet:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: swe_fleet_app
+    ports:
+      - "8512:8512"
+    environment:
+      - PORT=8512
+      - PYTHONUTF8=1
+      - AIR_GAPPED_MODE=true
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434/v1
+    volumes:
+      - ./storage:/app/storage
+      - ./sandbox:/app/sandbox
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8512/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,21 @@
+COMPLIANCE SENTINEL (GRC-as-a-Code para DORA, NIS2, ENS y EU AI Act)
+Propuesta Disruptiva
+Plataforma continua de gobernanza técnica, auditoría y certificación automatizada. Convierte normativas complejas europeas (DORA, NIS2, ENS Categoría Alta, RGPD, EU AI Act, CRA, ISO 27001) en código ejecutable con emisión de actas de custodia inmutables y dashboard interactivo para el CISO/CTO.
+
+Cruce con tus Repositorios:
+e:\PROYECTOS IA\AUDITORIAS\NUEVO ORDEN:
+1_PORTAL_CLIENTE\1_COMPLIANCE_MANAGER: Motor completo con interfaz Streamlit (dora_streamlit_app.py), CLI orchestrator (orchestrator_cli.py) y Dockerfile listo para contenedores.
+Generador de dictámenes ejecutivos formales: informe_ejecutivo_ciso_cto.md.
+e:\PROYECTOS IA\AUDITORIAS\NEO_PORTFOLIO:
+audit-compliance-engine: Microservicio FastAPI de alto rendimiento con validadores de seguridad para DORA, NIS2, ENISA, ENS SOA ALTA y OWASP Top 10.
+evidence-bunker-slsa3: Búnker criptográfico de custodia de evidencias inmutables con soporte Post-Quantum (PQC).
+e:\PROYECTOS IA\NEW AUDITS:
+Baterías de auditoría automatizada en tiempo de ejecución:
+01_iam_and_access_control: 07_iam_privilege_auditor_DORA.py, owasp_access_control_auditor.py.
+02_resilience_and_chaos_testing: dora_chaos_resilience_tester.py, cloud_exit_strategy_test.py.
+03_privacy_and_gdpr: rgpd_data_breach_auditor.py, test_gdpr_crypto_shredding.py.
+04_supply_chain_and_vulnerabilities: ens_vulnerability_and_patch_auditor.py.
+e:\PROYECTOS IA\scratch_grc: Arquitectura DevSecOps de cadena de suministro SLSA L3+ y conformidad con EU AI Act.
+e:\PROYECTOS IA\enterprise-rag-docker-mcp: RAG corporativo para consultar bases normativas y BOE en lenguaje natural mediante MCP.
+Scripts PY Ensamblados:
+dora_compliance_checker.py, nis2_gap_analyzer.py, gdpr_audit_scanner.py, ai_act_risk_classifier.py, iso27001_evidence_collector.py.

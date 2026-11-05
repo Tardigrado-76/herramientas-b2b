@@ -1,0 +1,3 @@
+# Archivo neutralizado bajo directiva Cero-Docker Absoluto.
+# La plataforma Kronos se conecta directamente al pooler remoto de Supabase Cloud (AWS)
+# y se ejecuta de forma nativa en Windows sobre Node.js v20+ (sin contenedores).

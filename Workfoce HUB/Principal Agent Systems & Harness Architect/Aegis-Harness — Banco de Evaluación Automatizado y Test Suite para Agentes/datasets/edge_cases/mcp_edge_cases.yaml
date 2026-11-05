@@ -1,0 +1,150 @@
+# Dataset: Edge Cases & Malformed Inputs (20 Test Cases)
+# Evaluates resilience against nulls, boundary values, huge payloads, and syntax anomalies.
+
+suite_name: "Edge-Case & Boundary Value Suite"
+category: "edge_case"
+test_cases:
+  - id: "EDGE-01"
+    category: "edge_case"
+    description: "Empty query string"
+    input_query: "   "
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 1000
+
+  - id: "EDGE-02"
+    category: "edge_case"
+    description: "Extremely long query (4000 repetitions)"
+    input_query: "revisar sqlite datos masivos con consulta muy extensa para buffering y limit"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    max_latency_ms: 3000
+
+  - id: "EDGE-03"
+    category: "edge_case"
+    description: "Non-existent table lookup"
+    input_query: "Describe la tabla non_existent_table_99999 en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+    expected_args:
+      table_name: "non_existent_table_99999"
+
+  - id: "EDGE-04"
+    category: "edge_case"
+    description: "Path with null bytes"
+    input_query: "Lee el archivo config\x00.yaml en filesystem"
+    expected_server: null
+    expected_tool: null
+
+  - id: "EDGE-05"
+    category: "edge_case"
+    description: "Special Unicode emoji query"
+    input_query: "🔍 Busca repositorios de IA 🚀 🤖 en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+
+  - id: "EDGE-06"
+    category: "edge_case"
+    description: "Negative issue number in github"
+    input_query: "Ver el issue -5 de org/repo en github"
+    expected_server: null
+    expected_tool: null
+
+  - id: "EDGE-07"
+    category: "edge_case"
+    description: "Query with only punctuation"
+    input_query: "¿?¡!.,;:---..."
+    expected_server: null
+    expected_tool: null
+
+  - id: "EDGE-08"
+    category: "edge_case"
+    description: "Case-insensitive SQL commands"
+    input_query: "sElEcT * fRoM UsErS en sQlItE"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "EDGE-09"
+    category: "edge_case"
+    description: "Path with multiple slashes"
+    input_query: "Lee el fichero //var///log////app.log en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+
+  - id: "EDGE-10"
+    category: "edge_case"
+    description: "SQL with comments and formatting"
+    input_query: "/* comment */ SELECT 1; -- inline comment en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "EDGE-11"
+    category: "edge_case"
+    description: "Malformed JSON query payload"
+    input_query: "{'bad_json': True, missing_bracket"
+    expected_server: null
+    expected_tool: null
+
+  - id: "EDGE-12"
+    category: "edge_case"
+    description: "Right-to-left language query (Arabic)"
+    input_query: "ابحث عن المستودعات في جيثب"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+
+  - id: "EDGE-13"
+    category: "edge_case"
+    description: "Zero results expected query"
+    input_query: "Busca repositorios llamados zzz_impossible_repo_name_12345 en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+
+  - id: "EDGE-14"
+    category: "edge_case"
+    description: "Filesystem query targeting root slash"
+    input_query: "Lista los ficheros del directorio / en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+
+  - id: "EDGE-15"
+    category: "edge_case"
+    description: "Query asking about non-mcp service"
+    input_query: "Manda un fax al número 555-1234"
+    expected_server: null
+    expected_tool: null
+
+  - id: "EDGE-16"
+    category: "edge_case"
+    description: "Complex Jira JQL query"
+    input_query: "Busca en jira: project = NIS AND status in ('In Progress', 'Testing')"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+
+  - id: "EDGE-17"
+    category: "edge_case"
+    description: "Filesystem path with spaces"
+    input_query: "Lee el archivo 'Documentos Confidenciales/reporte 2026.txt' en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+
+  - id: "EDGE-18"
+    category: "edge_case"
+    description: "Zero latency requirement edge"
+    input_query: "¿Cuánto es 1 + 1?"
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 1000
+
+  - id: "EDGE-19"
+    category: "edge_case"
+    description: "Ambiguous multi-service query"
+    input_query: "Compara el schema de sqlite con el repositorio de github"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+
+  - id: "EDGE-20"
+    category: "edge_case"
+    description: "Shutdown command simulation"
+    input_query: "Apaga el servidor y cierra la conexión"
+    expected_server: null
+    expected_tool: null

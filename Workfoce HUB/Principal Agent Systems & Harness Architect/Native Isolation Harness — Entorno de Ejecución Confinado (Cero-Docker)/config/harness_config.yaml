@@ -1,0 +1,12 @@
+# Native Isolation Harness - Confinamiento y Sandbox Nativo (Cero Docker)
+environment: production
+memory_limit_mb: 512
+cpu_rate_percent: 20
+max_processes: 4
+default_timeout_seconds: 30
+base_scratch_dir: "data/scratch"
+soc_log_path: "data/logs/soc_incidents.jsonl"
+kill_on_close: true
+strict_path_containment: true
+nist_wipe_passes: 1
+allowed_executables_config: "config/binary_whitelist.yaml"

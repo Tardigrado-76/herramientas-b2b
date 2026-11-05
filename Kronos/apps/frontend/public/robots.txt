@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# GEO Optimization for AI Bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /

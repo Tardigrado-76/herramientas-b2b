@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonoma-swe-fleet"
+version = "1.0.0"
+description = "Autonoma SWE-Fleet: Enjambre de Ingenieria de Software con Git Worktrees, Beads Ledger y The Witness Watchdog"
+readme = "README.md"
+authors = [{ name = "Quantigrade Sovereign Systems" }]
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.35.0",
+    "pydantic>=2.7.0",
+    "rich>=13.7.0",
+    "typer>=0.12.0",
+    "pyyaml>=6.0.1",
+    "pandas>=2.2.0",
+    "requests>=2.31.0",
+    "pytest>=8.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*", "gastown_engine*", "skills_mesh*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "--import-mode=importlib"
+testpaths = ["tests"]
+

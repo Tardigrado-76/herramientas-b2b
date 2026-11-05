@@ -1,0 +1,5 @@
+[2026-10-29T14:50:00Z] [INIT] Inicio de auditoría y remediación de LALA (Tier 50 - -70) hacia 100% Production Ready.
+[2026-10-29T14:52:00Z] [OCR_SERVICE] Implementada propiedad lazy `reader` en `services/ocr_service.py` y corregidos errores de tipado Mypy en PyMuPDF y PIL.Image.
+[2026-10-29T14:54:00Z] [CODE_DOCTOR] Corregidos los 28 avisos de Ruff y los 6 errores de Mypy en `config.py`, `services/ocr_service.py`, `services/data_service.py`, `gui/main_window.py`, `gui/worker.py` y `sample_data/generate_samples.py`.
+[2026-10-29T14:55:00Z] [TDD_SUITE] Añadido fixture autouse `mock_easyocr_reader` y ampliada la suite en `tests/test_services.py` a 14 tests cubriendo geometría, firmas GDPR, normalización, matching difuso y workers.
+[2026-10-29T14:56:00Z] [LAUNCHER] Creado `INICIAR_LALA_HUB.bat` con soporte UTF-8 (`chcp 65001 >nul`) y verificado 100% PASS en pytest, ruff y mypy.

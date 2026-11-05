@@ -1,0 +1,382 @@
+# Dataset: Functional Routing Tests (40 Test Cases)
+# Covers sqlite, github, filesystem, jira, and direct answer routing.
+
+suite_name: "Functional MCP Routing Suite"
+category: "functional"
+test_cases:
+  # SQLite Database queries (1-10)
+  - id: "FUNC-SQL-01"
+    category: "functional"
+    description: "Query active user accounts"
+    input_query: "Consulta los usuarios activos en la base de datos sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    expected_args:
+      sql: "SELECT * FROM users WHERE active = 1;"
+    max_latency_ms: 2500
+
+  - id: "FUNC-SQL-02"
+    category: "functional"
+    description: "Describe database table schema"
+    input_query: "Muestra la estructura de la tabla de empleados en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+    expected_args:
+      table_name: "empleados"
+    max_latency_ms: 2000
+
+  - id: "FUNC-SQL-03"
+    category: "functional"
+    description: "Count total audit records"
+    input_query: "Cuántos registros hay en la tabla audit_logs de sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    max_latency_ms: 2500
+
+  - id: "FUNC-SQL-04"
+    category: "functional"
+    description: "Inspect customer table"
+    input_query: "Obtén el esquema de la tabla customers en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+    expected_args:
+      table_name: "customers"
+    max_latency_ms: 2000
+
+  - id: "FUNC-SQL-05"
+    category: "functional"
+    description: "Select orders above threshold"
+    input_query: "Filtra en sqlite los pedidos con importe mayor a 500"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    max_latency_ms: 2500
+
+  - id: "FUNC-SQL-06"
+    category: "functional"
+    description: "Check table permissions"
+    input_query: "Describe la tabla permissions de la base de datos sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+    expected_args:
+      table_name: "permissions"
+    max_latency_ms: 2000
+
+  - id: "FUNC-SQL-07"
+    category: "functional"
+    description: "Retrieve failed logins"
+    input_query: "Consulta los intentos de login fallidos en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    max_latency_ms: 2500
+
+  - id: "FUNC-SQL-08"
+    category: "functional"
+    description: "Inspect session tokens table"
+    input_query: "Muestra las columnas de la tabla sessions en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+    expected_args:
+      table_name: "sessions"
+    max_latency_ms: 2000
+
+  - id: "FUNC-SQL-09"
+    category: "functional"
+    description: "Aggregate sales by region"
+    input_query: "Agrupa las ventas por region en la base de datos sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    max_latency_ms: 2500
+
+  - id: "FUNC-SQL-10"
+    category: "functional"
+    description: "Describe products catalog"
+    input_query: "Dame la definición de la tabla products en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+    expected_args:
+      table_name: "products"
+    max_latency_ms: 2000
+
+  # GitHub Operations (11-20)
+  - id: "FUNC-GH-11"
+    category: "functional"
+    description: "Search repositories by keyword"
+    input_query: "Busca repositorios de python para evaluación de agentes en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+    max_latency_ms: 3000
+
+  - id: "FUNC-GH-12"
+    category: "functional"
+    description: "Retrieve specific issue details"
+    input_query: "Consulta el issue 42 del repositorio org/backend en github"
+    expected_server: "github"
+    expected_tool: "get_issue"
+    expected_args:
+      owner: "org"
+      repo: "backend"
+      issue_number: 42
+    max_latency_ms: 2500
+
+  - id: "FUNC-GH-13"
+    category: "functional"
+    description: "Search LangGraph MCP repo"
+    input_query: "Encuentra el repositorio langgraph-mcp en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+    max_latency_ms: 3000
+
+  - id: "FUNC-GH-14"
+    category: "functional"
+    description: "Inspect issue on security tracker"
+    input_query: "Muestra los detalles del issue 15 de acme/security-tools en github"
+    expected_server: "github"
+    expected_tool: "get_issue"
+    expected_args:
+      owner: "acme"
+      repo: "security-tools"
+      issue_number: 15
+    max_latency_ms: 2500
+
+  - id: "FUNC-GH-15"
+    category: "functional"
+    description: "Find repositories tagged langchain"
+    input_query: "Busca repositorios con tag langchain en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+    max_latency_ms: 3000
+
+  - id: "FUNC-GH-16"
+    category: "functional"
+    description: "Look up issue 101 on repo gateway"
+    input_query: "Ver issue 101 de bunker/gateway en github"
+    expected_server: "github"
+    expected_tool: "get_issue"
+    expected_args:
+      owner: "bunker"
+      repo: "gateway"
+      issue_number: 101
+    max_latency_ms: 2500
+
+  - id: "FUNC-GH-17"
+    category: "functional"
+    description: "Search agent benchmarking libraries"
+    input_query: "Localiza librerías de benchmark para agentes en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+    max_latency_ms: 3000
+
+  - id: "FUNC-GH-18"
+    category: "functional"
+    description: "Check bug report issue"
+    input_query: "Obtén el issue 88 en dev/frontend desde github"
+    expected_server: "github"
+    expected_tool: "get_issue"
+    expected_args:
+      owner: "dev"
+      repo: "frontend"
+      issue_number: 88
+    max_latency_ms: 2500
+
+  - id: "FUNC-GH-19"
+    category: "functional"
+    description: "Search MCP servers"
+    input_query: "Busca en github repositorios de servidores model context protocol"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+    max_latency_ms: 3000
+
+  - id: "FUNC-GH-20"
+    category: "functional"
+    description: "Fetch pull request discussion issue"
+    input_query: "Consulta el issue 200 de empresa/core en github"
+    expected_server: "github"
+    expected_tool: "get_issue"
+    expected_args:
+      owner: "empresa"
+      repo: "core"
+      issue_number: 200
+    max_latency_ms: 2500
+
+  # Filesystem Operations (21-30)
+  - id: "FUNC-FS-21"
+    category: "functional"
+    description: "Read configuration file"
+    input_query: "Lee el contenido del archivo /etc/app/config.yaml en el filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+    expected_args:
+      path: "/etc/app/config.yaml"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-22"
+    category: "functional"
+    description: "List directory files"
+    input_query: "Lista los archivos del directorio /var/log en el filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+    expected_args:
+      path: "/var/log"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-23"
+    category: "functional"
+    description: "Read package.json"
+    input_query: "Lee el archivo package.json del proyecto usando filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+    expected_args:
+      path: "package.json"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-24"
+    category: "functional"
+    description: "List src directory"
+    input_query: "Muestra los archivos en la carpeta src mediante filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+    expected_args:
+      path: "src"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-25"
+    category: "functional"
+    description: "Read README documentation"
+    input_query: "Abre y lee el archivo README.md del filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+    expected_args:
+      path: "README.md"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-26"
+    category: "functional"
+    description: "List datasets directory"
+    input_query: "Lista el contenido de la carpeta datasets en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+    expected_args:
+      path: "datasets"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-27"
+    category: "functional"
+    description: "Read audit log"
+    input_query: "Lee el fichero audit_nis2_ledger.jsonl con filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+    expected_args:
+      path: "audit_nis2_ledger.jsonl"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-28"
+    category: "functional"
+    description: "List tests folder"
+    input_query: "Muestra qué ficheros hay dentro del directorio tests usando filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+    expected_args:
+      path: "tests"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-29"
+    category: "functional"
+    description: "Read pyproject.toml"
+    input_query: "Lee la configuración en pyproject.toml vía filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+    expected_args:
+      path: "pyproject.toml"
+    max_latency_ms: 2000
+
+  - id: "FUNC-FS-30"
+    category: "functional"
+    description: "List root files"
+    input_query: "Lista todos los archivos del directorio raíz en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+    expected_args:
+      path: "."
+    max_latency_ms: 2000
+
+  # Jira Project Management (31-35)
+  - id: "FUNC-JIRA-31"
+    category: "functional"
+    description: "Search Jira issues"
+    input_query: "Busca las tareas pendientes del proyecto NIS2 en jira"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+    max_latency_ms: 3000
+
+  - id: "FUNC-JIRA-32"
+    category: "functional"
+    description: "Search open bugs in Jira"
+    input_query: "Encuentra los bugs críticos abiertos en jira"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+    max_latency_ms: 3000
+
+  - id: "FUNC-JIRA-33"
+    category: "functional"
+    description: "Search sprint backlog in Jira"
+    input_query: "Muestra las historias del sprint actual en jira"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+    max_latency_ms: 3000
+
+  - id: "FUNC-JIRA-34"
+    category: "functional"
+    description: "Search tickets assigned to user"
+    input_query: "Consulta mis incidencias asignadas en jira"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+    max_latency_ms: 3000
+
+  - id: "FUNC-JIRA-35"
+    category: "functional"
+    description: "Query compliance epics in Jira"
+    input_query: "Busca las épicas de auditoría legal en jira"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+    max_latency_ms: 3000
+
+  # Direct Reasoning Queries without Tools (36-40)
+  - id: "FUNC-DIR-36"
+    category: "functional"
+    description: "Direct concept explanation"
+    input_query: "¿Qué es el Reglamento Europeo de Inteligencia Artificial?"
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 2000
+
+  - id: "FUNC-DIR-37"
+    category: "functional"
+    description: "Direct architectural query"
+    input_query: "Explica la diferencia entre un test unitario y uno de integración"
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 2000
+
+  - id: "FUNC-DIR-38"
+    category: "functional"
+    description: "Direct syntax question"
+    input_query: "¿Cómo se define una dataclass en Python 3.11?"
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 1800
+
+  - id: "FUNC-DIR-39"
+    category: "functional"
+    description: "Direct mathematical operation"
+    input_query: "¿Cuánto es 256 multiplicado por 8?"
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 1500
+
+  - id: "FUNC-DIR-40"
+    category: "functional"
+    description: "Direct greeting"
+    input_query: "Hola, buenos días"
+    expected_server: null
+    expected_tool: null
+    max_latency_ms: 1500

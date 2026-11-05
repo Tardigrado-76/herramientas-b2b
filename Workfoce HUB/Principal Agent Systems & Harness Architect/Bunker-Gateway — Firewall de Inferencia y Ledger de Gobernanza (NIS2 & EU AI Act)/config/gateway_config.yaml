@@ -1,0 +1,66 @@
+# Bunker-Gateway System Configuration
+server:
+  host: "127.0.0.1"
+  port: 8080
+  workers: 1
+  cors_origins: ["*"]
+
+upstreams:
+  openai:
+    base_url: "https://api.openai.com/v1"
+    timeout_seconds: 60.0
+    max_retries: 2
+  anthropic:
+    base_url: "https://api.anthropic.com/v1"
+    timeout_seconds: 60.0
+    max_retries: 2
+  local_fallback:
+    base_url: "http://127.0.0.1:11434/v1"
+    timeout_seconds: 120.0
+
+guardrails:
+  inbound:
+    pii_redaction:
+      enabled: true
+      mask_dni: true
+      mask_iban: true
+      mask_credit_cards: true
+      mask_emails: true
+      mask_phone_numbers: true
+    prompt_injection:
+      enabled: true
+      sensitivity: "strict" # strict / moderate / permissive
+      block_roleplay_dan: true
+      block_markdown_delimiters: true
+      block_base64_smuggling: true
+    abac_tools:
+      enabled: true
+      policy_file: "config/abac_policies.yaml"
+
+  outbound:
+    secret_detector:
+      enabled: true
+      block_api_keys: true
+      block_private_keys: true
+      block_connection_strings: true
+      streaming_buffer_tokens: 64
+    pii_rehydration:
+      enabled: true
+
+resilience:
+  circuit_breaker:
+    enabled: true
+    max_consecutive_duplicates: 4
+    cycle_window_seconds: 120
+  rate_limiter:
+    enabled: true
+    default_rpm: 60
+    default_tpm: 100000
+    monetary_daily_limit_usd: 50.00
+
+ledger:
+  file_path: "data/audit_nis2_ledger.jsonl"
+  sealer_manifest_dir: "data/manifests"
+  chain_algorithm: "SHA-256"
+  signature_algorithm: "ECDSA_P256+PQC_ML_DSA_87"
+  seal_frequency_minutes: 60

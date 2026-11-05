@@ -1,0 +1,67 @@
+# ABAC Policy Matrix for Autonomous Agents and Tools
+version: "1.0"
+
+agents:
+  chief-of-staff:
+    allowed_tools:
+      - "freeze_service"
+      - "get_audit_ledger"
+      - "approve_mission"
+      - "read_kpi_dashboard"
+    disallowed_tools:
+      - "delete_database"
+      - "drop_table"
+    max_risk_level: "CRITICAL"
+
+  hr-operations-specialist:
+    allowed_tools:
+      - "kronos_get_entry"
+      - "kronos_adjust_entry"
+      - "kronos_weekly_summary"
+      - "send_slack_notification"
+    disallowed_tools:
+      - "drop_table"
+      - "financial_refund"
+    max_risk_level: "HIGH"
+
+  gtm-engineer:
+    allowed_tools:
+      - "search_web"
+      - "query_crm_leads"
+      - "send_outreach_email"
+    disallowed_tools:
+      - "kronos_adjust_entry"
+      - "execute_sql_write"
+    max_risk_level: "MEDIUM"
+
+  sales-employee:
+    allowed_tools:
+      - "query_crm_deals"
+      - "generate_proposal_pdf"
+      - "apply_commercial_discount"
+    disallowed_tools:
+      - "kronos_adjust_entry"
+      - "execute_sql_write"
+    max_risk_level: "MEDIUM"
+
+  langgraph-mcp:
+    allowed_tools:
+      - "search_nodes"
+      - "get_node"
+      - "read_file"
+      - "execute_command"
+    disallowed_tools:
+      - "drop_database"
+      - "format_disk"
+    max_risk_level: "HIGH"
+
+default_policy:
+  allowed_tools:
+    - "search_web"
+    - "read_file"
+    - "notify_user"
+  disallowed_tools:
+    - "execute_raw_sql_delete"
+    - "drop_table"
+    - "shutdown_host"
+  max_risk_level: "LOW"

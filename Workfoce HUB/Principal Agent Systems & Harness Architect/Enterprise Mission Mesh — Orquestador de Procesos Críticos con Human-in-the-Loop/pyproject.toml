@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-mission-mesh"
+version = "1.0.0"
+description = "Enterprise Mission Mesh: Async HITL Orchestrator with Idempotent Sagas and 1-Click Rollback"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Enterprise Mesh Architecture Team" }]
+dependencies = [
+    "pydantic>=2.7.0",
+    "fastapi>=0.111.0",
+    "uvicorn>=0.30.0",
+    "httpx>=0.27.0",
+    "pyyaml>=6.0.1",
+    "rich>=13.7.0",
+    "reportlab>=4.2.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0"
+]
+
+[project.scripts]
+mesh-cli = "enterprise_mission_mesh.cli.mesh_cli:main"
+mesh-audit = "enterprise_mission_mesh.cli.audit_trail:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+

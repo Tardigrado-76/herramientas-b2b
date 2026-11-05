@@ -1,0 +1,74 @@
+# Aegis-Harness Configuration — Banco de Evaluación Automatizado para Agentes
+version: "1.0.0"
+project_name: "Aegis-Harness"
+
+# Modos de Evaluación soportados:
+# - "hybrid": Evaluación determinista exhaustiva (sin coste) + juez semántico opcional si Ollama está disponible
+# - "deterministic_only": Solo métricas deterministas heurísticas (0 tokens LLM, coste $0, ultra rápido)
+# - "ollama_only": Evaluación con modelo local de Ollama
+evaluation_mode: "hybrid"
+
+agent_under_test:
+  primary:
+    name: "langgraph-mcp-agent"
+    entrypoint: "e:/PROYECTOS IA/MINI-AGENT LANGGRAPH/src/langgraph_mcp/assistant_graph.py"
+    type: "langgraph"
+  secondary:
+    - name: "ai-employees-gtm"
+      entrypoint: "e:/PROYECTOS IA/ai-employees/employees/gtm-engineer"
+      type: "ai_employee"
+    - name: "ai-employees-chief-of-staff"
+      entrypoint: "e:/PROYECTOS IA/ai-employees/employees/chief-of-staff"
+      type: "ai_employee"
+    - name: "ai-employees-web-dev"
+      entrypoint: "e:/PROYECTOS IA/ai-employees/employees/web-dev"
+      type: "ai_employee"
+    - name: "ai-employees-customer-satisfaction"
+      entrypoint: "e:/PROYECTOS IA/ai-employees/employees/customer-satisfaction"
+      type: "ai_employee"
+
+evaluators:
+  deterministic:
+    enabled: true
+    weights:
+      routing_accuracy: 0.30
+      tool_precision: 0.25
+      schema_compliance: 0.20
+      latency_score: 0.15
+      constraint_preservation: 0.10
+    thresholds:
+      max_latency_ms: 3000
+      min_tool_precision: 0.90
+  
+  ollama:
+    enabled: true
+    host: "http://localhost:11434"
+    model: "llama3.2:latest"
+    fallback_models: ["mistral:latest", "qwen2.5:latest"]
+    timeout_seconds: 30
+    temperature: 0.0
+    fallback_to_deterministic_if_offline: true
+
+quality_gate:
+  minimum_overall_score: 85.0
+  maximum_failure_rate_percent: 5.0
+  block_on_adversarial_breach: true
+  block_on_pii_leak: true
+
+datasets:
+  functional_dir: "datasets/functional"
+  adversarial_dir: "datasets/adversarial"
+  edge_cases_dir: "datasets/edge_cases"
+  regression_dir: "datasets/regression"
+
+reporting:
+  output_dir: "reports"
+  generate_pdf: true
+  generate_markdown: true
+  pdf_compliance_standard: "NIS2_ART21_EU_AI_ACT"
+
+ledger:
+  enabled: true
+  file_path: "reports/aegis_audit_ledger.jsonl"
+  hash_algorithm: "sha256"
+  sign_blocks: true

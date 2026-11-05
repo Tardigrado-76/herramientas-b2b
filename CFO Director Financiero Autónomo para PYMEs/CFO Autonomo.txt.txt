@@ -1,0 +1,12 @@
+AUTÓNOMO CFO (Director Financiero Autónomo para PYMEs)
+
+Propuesta Disruptiva
+Reemplazar la asesoría contable y el software de facturación tradicional por un CFO autónomo impulsado por agentes de IA que escanea tickets y facturas (manuscritos o impresos), concilia transacciones bancarias en tiempo real, proyecta el flujo de caja a 90 días, genera presupuestos ejecutivos y audita el cumplimiento fiscal y antifraude.
+
+Cruce con tus Repositorios:
+e:\PROYECTOS IA\LALA: Proporciona el Frontend de Escritorio Nativo y Motor OCR. Posee una aplicación ejecutiva completa en PySide6 (gui/main_window.py, gui/styles.py, gui/worker.py), preparada con soporte multi-hilo para digitalización de formularios físicos/manuscritos (sample_data/formulario_manuscrito_simulado.png) y sincronización bidireccional con hojas maestras de Excel.
+e:\PROYECTOS IA\PORTFOLIO\COMPLETO: Proporciona los generadores de presupuestos y modelos financieros en Word y PDF listos para producción (generate_budget_docx.py, generate_budget_pdf.py), además de los flujos n8n de orquestación de secretaría ejecutiva (n8n_agente_secretario_enhanced.json).
+e:\PROYECTOS IA\AUDITORIAS\NUEVO ORDEN: Módulo 1_PORTAL_CLIENTE\1_COMPLIANCE_MANAGER para trazabilidad y reglas de auditoría contable/fiscal bajo estándares europeos.
+e:\PROYECTOS IA\AUDITORIAS\PRODUCTION-READY: FinOps Semantic Router integrado para mantener el coste de inferencia de reconciliación contable por debajo de 0.001€ por factura.
+Scripts PY Ensamblados:
+balance_sheet_analyzer.py, financial_ratio_calculator.py, cash_flow_forecaster.py, invoice_processor.py, tax_deduction_finder.py, fraud_detector.py.

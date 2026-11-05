@@ -1,0 +1,17 @@
+OUTBOUND MACHINE (Motor B2B Autónomo de Prospección y Cierre)
+Propuesta Disruptiva
+Sistema de generación de demanda y prospección outbound 100% autónomo. Extrae empresas objetivo, enriquece tomadores de decisión mediante OSINT, genera ganchos hiperextremos personalizados, redacta borradores en Gmail y gestiona la cadencia de envío respetando normativas antispam y RGPD.
+
+Cruce con tus Repositorios:
+e:\PROYECTOS IA\DISTRITO DIGITAL: ¡Este repositorio ES ya un motor de prospección outbound validado en el mundo real!
+fetch_playwright.py: Scraping headless con Playwright para extraer empresas y directorios.
+extract_and_filter.py: Depuración y filtrado inteligente de bases de datos de target corporativo.
+enriquecer_y_preparar_emails.py: Enriquecimiento de contactos y asignación de propuestas de valor personalizadas.
+crear_borradores_gmail.py: Inyección automática de emails redactados en borrador vía API de Google Workspace.
+enviar_candidaturas_grc.py: Despacho SMTP seguro y programado con logging de auditoría en tiempo real.
+e:\PROYECTOS IA\ai-employees:
+Empleado "Sales" y "GTM Engineer": Contienen contratos operativos (CONTRACT.md), roles (ROLE.md), rutinas periódicas de prospección (SKILL.md) y el enjambre de cualificación de leads lead_qualification_swarm.py.
+Guardarraíles de seguridad y calidad en scripts/guard.mjs y copy-check.mjs.
+e:\PROYECTOS IA\PORTFOLIO\COMPLETO: Flujos n8n para webhooks de respuesta de clientes y actualización de CRM en piloto automático.
+Scripts PY Ensamblados:
+lead_enricher.py, email_verifier.py, linkedin_prospector.py, personalized_pitch_writer.py, outbound_sequence_manager.py

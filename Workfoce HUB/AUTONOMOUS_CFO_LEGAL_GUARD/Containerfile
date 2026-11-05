@@ -1,0 +1,45 @@
+# Autonomous Vertical CFO & Legal Guard - Micro-SaaS Containerfile
+# Hardened minimal Python 3.11 environment for on-premise sovereign execution
+
+FROM python:3.11-slim
+
+LABEL maintainer="Quantigrade Autonomous Systems"
+LABEL description="Autonomous Vertical CFO & Legal Guard - Sovereign Micro-SaaS"
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONUTF8=1 \
+    PYTHONIOENCODING=utf-8 \
+    STREAMLIT_SERVER_PORT=8510 \
+    STREAMLIT_SERVER_HEADLESS=true \
+    STREAMLIT_SERVER_ADDRESS=0.0.0.0
+
+WORKDIR /app
+
+# Install security certificates & font essentials for PDF generation
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    fonts-liberation \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application source code
+COPY . .
+
+# Create non-root user for security (NIS2 Compliance)
+RUN useradd -m -u 1001 appuser && \
+    mkdir -p /app/storage/ledger /app/storage/approvals && \
+    chown -R appuser:appuser /app
+
+USER appuser
+
+EXPOSE 8510
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:8510/_stcore/health || exit 1
+
+CMD ["streamlit", "run", "app_streamlit.py"]

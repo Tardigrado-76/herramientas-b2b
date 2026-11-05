@@ -1,0 +1,88 @@
+# HITL Notification Templates for Omnichannel Dispatch
+
+slack:
+  header: "🚨 [HITL Approval Required] Mission {mission_id}"
+  sections:
+    - type: "mrkdwn"
+      text: "*Emitter Agent:* `{agent_id}` ({agent_type})\n*Action:* `{action_type}`\n*Entity:* `{target_entity_id}`\n*Risk Level:* *{risk_level}* | *Confidence:* {confidence:.1%}\n\n*Summary:* {description}"
+    - type: "mrkdwn"
+      text: "*Business Impact & Legal Evaluation:*\n{impact_reason}"
+  actions:
+    - type: "button"
+      text: "✅ Aprobar Cambio"
+      style: "primary"
+      action_id: "approve_mission"
+      value: "{approve_token}"
+    - type: "button"
+      text: "❌ Rechazar"
+      style: "danger"
+      action_id: "reject_mission"
+      value: "{reject_token}"
+    - type: "button"
+      text: "❓ Pedir Explicación"
+      action_id: "explain_mission"
+      value: "{explain_token}"
+
+teams:
+  schema: "http://adaptivecards.io/schemas/adaptive-card.json"
+  version: "1.4"
+  title: "⚠️ Aprobación de Misión Crítica — Enterprise Mission Mesh"
+  body:
+    - title: "Misión"
+      value: "{mission_id}"
+    - title: "Agente Emisor"
+      value: "{agent_id}"
+    - title: "Acción Solicitada"
+      value: "{action_type}"
+    - title: "Riesgo & Confianza"
+      value: "{risk_level} ({confidence:.1%})"
+    - title: "Impacto Legal/Laboral"
+      value: "{impact_reason}"
+  actions:
+    - type: "Action.Submit"
+      title: "Aprobar Cambio"
+      data:
+        decision: "APPROVE"
+        token: "{approve_token}"
+    - type: "Action.Submit"
+      title: "Rechazar"
+      data:
+        decision: "REJECT"
+        token: "{reject_token}"
+    - type: "Action.Submit"
+      title: "Pedir Explicación"
+      data:
+        decision: "EXPLAIN"
+        token: "{explain_token}"
+
+telegram:
+  text: |
+    🛡️ *ENTERPRISE MISSION MESH — APROBACIÓN REQUERIDA*
+    ━━━━━━━━━━━━━━━━━━━━━━
+    🆔 *Misión:* `{mission_id}`
+    🤖 *Agente:* `{agent_id}` ({agent_type})
+    ⚡ *Acción:* `{action_type}`
+    🎯 *Entidad:* `{target_entity_id}`
+    📊 *Riesgo:* `{risk_level}` | *Confianza:* `{confidence:.1%}`
+    
+    📝 *Detalle:* {description}
+    ⚖️ *Evaluación:* {impact_reason}
+  keyboard:
+    - - text: "✅ Aprobar"
+        callback_data: "APP:{approve_token}"
+      - text: "❌ Rechazar"
+        callback_data: "REJ:{reject_token}"
+    - - text: "❓ Pedir Explicación"
+        callback_data: "EXP:{explain_token}"
+
+generic_webhook:
+  event: "HITL_DECISION_REQUIRED"
+  mission_id: "{mission_id}"
+  agent_id: "{agent_id}"
+  action_type: "{action_type}"
+  risk_level: "{risk_level}"
+  confidence: "{confidence}"
+  actions:
+    approve_url: "{callback_base}/callback/decision?decision=APPROVE&token={approve_token}"
+    reject_url: "{callback_base}/callback/decision?decision=REJECT&token={reject_token}"
+    explain_url: "{callback_base}/callback/decision?decision=EXPLAIN&token={explain_token}"

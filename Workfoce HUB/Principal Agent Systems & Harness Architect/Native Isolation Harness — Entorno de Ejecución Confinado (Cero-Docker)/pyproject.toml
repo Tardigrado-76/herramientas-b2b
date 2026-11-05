@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "native-isolation-harness"
+version = "1.0.0"
+description = "Native Isolation Harness: Entorno de Ejecución Confinado y Micro-Sandbox Nativo para Agentes de IA (Cero-Docker)"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Principal Agent Systems & Harness Architecture Team" }]
+dependencies = [
+    "pydantic>=2.7.0",
+    "pyyaml>=6.0.1",
+    "psutil>=5.9.0",
+    "rich>=13.7.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0"
+]
+
+[project.scripts]
+harness = "native_isolation_harness.cli.harness_cli:main"
+soc-monitor = "native_isolation_harness.cli.soc_monitor:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]
+

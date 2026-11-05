@@ -1,0 +1,16 @@
+{
+    "name": "Tavilga Cronos",
+    "short_name": "Cronos",
+    "description": "Gestión de tiempos y producción Tavilga Sevilla",
+    "start_url": "/dashboard",
+    "display": "standalone",
+    "background_color": "#002144",
+    "theme_color": "#D4AF37",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "192x192",
+            "type": "image/x-icon"
+        }
+    ]
+}

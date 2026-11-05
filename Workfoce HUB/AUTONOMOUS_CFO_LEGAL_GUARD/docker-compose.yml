@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  cfo-legal-guard:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: cfo_legal_guard_app
+    ports:
+      - "8510:8510"
+    environment:
+      - PORT=8510
+      - PYTHONUTF8=1
+      - AIR_GAPPED_MODE=true
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434/v1
+    volumes:
+      - ./storage:/app/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8510/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

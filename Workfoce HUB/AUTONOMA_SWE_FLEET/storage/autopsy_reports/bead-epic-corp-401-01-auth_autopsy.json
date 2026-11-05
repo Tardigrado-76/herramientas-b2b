@@ -1,0 +1,11 @@
+{
+  "autopsy_id": "AUTOPSY-bead-epic-corp-401-01-auth-002",
+  "bead_id": "bead-epic-corp-401-01-auth",
+  "timestamp": "2026-10-22T11:19:36.975734+00:00",
+  "kill_reason": "INFINITE_LOOP_DETECTED: El agente falló 3 veces consecutivas el mismo test sin progresar.",
+  "tokens_consumed": 8500,
+  "token_budget": 40000,
+  "consecutive_test_fails": 3,
+  "last_error_summary": "AssertionError: Expected 200 OK, got 500 Internal Error (Infinite Loop Failure)",
+  "forensic_notes": "Terminación forzada ejecutada por The Witness. Worktree congelado para análisis de seguridad."
+}

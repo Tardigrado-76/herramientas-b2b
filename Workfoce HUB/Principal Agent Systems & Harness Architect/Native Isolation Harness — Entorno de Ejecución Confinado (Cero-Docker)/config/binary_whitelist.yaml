@@ -1,0 +1,50 @@
+# Whitelist de Binarios y Control de Argumentos
+allowed_binaries:
+  - name: "python"
+    aliases: ["python.exe", "python3", "python3.exe"]
+    allow_scripts: true
+  - name: "node"
+    aliases: ["node.exe"]
+    allow_scripts: true
+  - name: "git"
+    aliases: ["git.exe"]
+    allowed_subcommands: ["status", "diff", "log", "branch", "show", "rev-parse"]
+  - name: "uv"
+    aliases: ["uv.exe", "uvx", "uvx.exe"]
+  - name: "npx"
+    aliases: ["npx.cmd", "npx.exe"]
+
+prohibited_binaries:
+  - "cmd"
+  - "cmd.exe"
+  - "powershell"
+  - "powershell.exe"
+  - "pwsh"
+  - "pwsh.exe"
+  - "certutil"
+  - "certutil.exe"
+  - "whoami"
+  - "whoami.exe"
+  - "net"
+  - "net.exe"
+  - "reg"
+  - "reg.exe"
+  - "wscript"
+  - "wscript.exe"
+  - "cscript"
+  - "cscript.exe"
+  - "vssadmin"
+  - "vssadmin.exe"
+
+forbidden_argument_patterns:
+  - "&"
+  - "|"
+  - ";"
+  - "`"
+  - "$("
+  - ">"
+  - "<"
+  - "-enc"
+  - "-encodedcommand"
+  - "downloadstring"
+  - "iex"

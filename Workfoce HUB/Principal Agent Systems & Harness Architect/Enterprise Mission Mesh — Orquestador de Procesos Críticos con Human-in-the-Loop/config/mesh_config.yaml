@@ -1,0 +1,67 @@
+# Enterprise Mission Mesh Configuration
+system:
+  environment: "production"
+  min_auto_confidence: 0.95
+  hitl_timeout_seconds: 3600
+  hmac_secret_key: "enterprise_mission_mesh_secure_token_secret_key_change_in_prod"
+  db_path: "data/mesh_ledger.db"
+  audit_export_dir: "exports/dossiers"
+
+channels:
+  default_channel: "local_portal"
+  enabled_channels:
+    - "slack"
+    - "teams"
+    - "telegram"
+    - "webhook"
+    - "email"
+    - "discord"
+    - "whatsapp"
+    - "local_portal"
+  slack:
+    webhook_url: ""
+    bot_token: ""
+    channel: "#executive-approvals"
+  teams:
+    webhook_url: ""
+  telegram:
+    bot_token: ""
+    chat_id: ""
+  webhook:
+    target_url: "http://127.0.0.1:5678/webhook/hitl-mission-approval"
+  email:
+    smtp_host: "127.0.0.1"
+    smtp_port: 25
+    sender: "mesh-approvals@enterprise.local"
+    recipient: "supervisor@enterprise.local"
+  discord:
+    webhook_url: ""
+  whatsapp:
+    api_url: ""
+    phone_number_id: ""
+  local_portal:
+    host: "127.0.0.1"
+    port: 8765
+    auto_refresh_seconds: 3
+
+connectors:
+  kronos:
+    base_url: "http://127.0.0.1:3000"
+    service_token: "kronos_service_secure_token_mesh"
+    timeout_seconds: 10
+    max_retries: 3
+    enforce_legal_boundary: true
+    max_auto_time_delta_minutes: 15
+  n8n:
+    base_url: "http://127.0.0.1:5678"
+    api_key: ""
+    timeout_seconds: 10
+
+impact_thresholds:
+  financial_auto_limit_eur: 100.00
+  kronos_auto_max_diff_minutes: 15
+  require_supervisor_roles:
+    - "OPERATIONS_LEAD"
+    - "HR_MANAGER"
+    - "CHIEF_OF_STAFF"
+    - "COMPLIANCE_OFFICER"

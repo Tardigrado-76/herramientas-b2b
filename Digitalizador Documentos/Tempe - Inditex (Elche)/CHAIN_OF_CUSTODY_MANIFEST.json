@@ -1,0 +1,86 @@
+{
+  "audit_metadata": {
+    "company_name": "Tempe - Inditex (Elche)",
+    "timestamp_utc": "2026-09-30T08:53:49.190602+00:00",
+    "engine_version": "IT_COMPLIANCE_MANAGER v1.0.0",
+    "execution_environment": "Air-Gapped Enterprise DevSecOps Bunker"
+  },
+  "cryptographic_sealing": {
+    "hash_algorithm": "SHA-256",
+    "merkle_root_hash": "5a458de61eb7127dbcb52696975b9fc0ea25b31f6b30a7994e4128175213ea7e",
+    "total_artifacts_sealed": 3,
+    "artifact_hashes": {
+      "EXECUTIVE_CISO_SUMMARY.md": "50fd8c779badef6d3c8d8279238d683c2d0d9ef2056936c89b713125387f5728",
+      "GDPR_TOMS_VERIFICATION_REPORT.md": "69f2259590c93293f73fea277a5889ea84db705e43d04c267a746e5b102b8a92",
+      "TECHNICAL_AUDIT_EVIDENCE_MATRIX.md": "d9ff7f2acdfa0f4d2a4935d212fe8fa1c241ee9b676391ca4a0e4c551b540b17"
+    },
+    "digital_signatures": {
+      "ecdsa_p256": "ECDSA_P256_SIG_bb98b42e76ff7e64c30f13f5e777979668d5f515978e3ead0284f192d430779d",
+      "pqc_ml_dsa_87": "PQC_ML_DSA_87_SIG_c8d5c178f029d04d7089e71ae68aad139e2ccd51d1259855f977b6e18cac2ab9cbf9fef663de03ec5ba12811d8d0cedabc17457b14da2b98664265f3a742687f",
+      "key_provenance": "FIPS 140-3 Hardware/Software Crypto Module"
+    }
+  },
+  "slsa_v1_0_provenance": {
+    "_type": "https://in-toto.io/Statement/v0.1",
+    "predicateType": "https://slsa.dev/provenance/v1.0",
+    "subject": [
+      {
+        "name": "EXECUTIVE_CISO_SUMMARY.md",
+        "digest": {
+          "sha256": "50fd8c779badef6d3c8d8279238d683c2d0d9ef2056936c89b713125387f5728"
+        }
+      },
+      {
+        "name": "GDPR_TOMS_VERIFICATION_REPORT.md",
+        "digest": {
+          "sha256": "69f2259590c93293f73fea277a5889ea84db705e43d04c267a746e5b102b8a92"
+        }
+      },
+      {
+        "name": "TECHNICAL_AUDIT_EVIDENCE_MATRIX.md",
+        "digest": {
+          "sha256": "d9ff7f2acdfa0f4d2a4935d212fe8fa1c241ee9b676391ca4a0e4c551b540b17"
+        }
+      }
+    ],
+    "builder": {
+      "id": "https://github.com/convotis/IT_COMPLIANCE_MANAGER@v1.0.0",
+      "builderDependencies": [
+        {
+          "uri": "pkg:pip/reportlab@3.6.12"
+        },
+        {
+          "uri": "pkg:pip/pydantic@2.5.2"
+        },
+        {
+          "uri": "pkg:pip/cryptography@41.0.7"
+        }
+      ]
+    },
+    "buildType": "https://slsa.dev/compliance-as-code/v1.0",
+    "invocation": {
+      "configSource": {
+        "uri": "git+https://github.com/convotis/IT_COMPLIANCE_MANAGER.git",
+        "digest": {
+          "sha256": "5a458de61eb7127dbcb52696975b9fc0"
+        },
+        "entryPoint": "orchestrator_cli.py"
+      },
+      "parameters": {
+        "company_name": "Tempe - Inditex (Elche)",
+        "air_gapped": true,
+        "slsa_level": "Level 3+"
+      }
+    },
+    "metadata": {
+      "buildStartedOn": "2026-09-30T08:53:49.190602+00:00",
+      "buildFinishedOn": "2026-09-30T08:53:49.190602+00:00",
+      "completeness": {
+        "parameters": true,
+        "environment": true,
+        "materials": true
+      },
+      "reproducible": true
+    }
+  }
+}

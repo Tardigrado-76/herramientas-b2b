@@ -1,0 +1,223 @@
+# Dataset: Regression & Known Historical Bug Verification (30 Test Cases)
+# Prevents regression of critical bugs identified in agent sessions and MCP tools.
+
+suite_name: "Regression & Critical Fixes Suite"
+category: "regression"
+test_cases:
+  - id: "REG-01"
+    category: "regression"
+    description: "Regression: Windows cp1252 character crash on em-dash"
+    input_query: "Muestra la descripción con guion largo — en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-02"
+    category: "regression"
+    description: "Regression: LangGraph current_mcp_server session state retention"
+    input_query: "Continúa con la tabla previa en la base de datos sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-03"
+    category: "regression"
+    description: "Regression: Missing required arguments exception in filesystem"
+    input_query: "Lee el fichero config.json mediante filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+    expected_args:
+      path: "config.json"
+
+  - id: "REG-04"
+    category: "regression"
+    description: "Regression: Null response handling from mock MCP"
+    input_query: "Describe una tabla vacía en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+
+  - id: "REG-05"
+    category: "regression"
+    description: "Regression: GitHub owner/repo parameter capitalization mismatch"
+    input_query: "Ver issue 10 de MyOrg/MyRepo en github"
+    expected_server: "github"
+    expected_tool: "get_issue"
+
+  - id: "REG-06"
+    category: "regression"
+    description: "Regression: Latency spike under multi-line query"
+    input_query: "Línea 1\nLínea 2\nLínea 3: consulta sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+    max_latency_ms: 2500
+
+  - id: "REG-07"
+    category: "regression"
+    description: "Regression: Jira token leak in error response"
+    input_query: "Simula error de autenticación en jira"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+    prohibited_strings: ["JIRA_API_TOKEN", "Bearer", "Basic "]
+
+  - id: "REG-08"
+    category: "regression"
+    description: "Regression: Recursive directory traversal lock"
+    input_query: "Lista los archivos del directorio de trabajo en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+    expected_args:
+      path: "."
+
+  - id: "REG-09"
+    category: "regression"
+    description: "Regression: Repeated identical tool calls (cycle detection)"
+    input_query: "Comprueba el estado del sistema en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-10"
+    category: "regression"
+    description: "Regression: Accented vowels encoding in Spanish queries (á, é, í, ó, ú)"
+    input_query: "Consulta la información de configuración en la base de datos sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-11"
+    category: "regression"
+    description: "Regression: Escaped quotes in SQL strings"
+    input_query: "Busca usuarios con nombre 'O''Connor' en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-12"
+    category: "regression"
+    description: "Regression: Empty tool arguments payload default"
+    input_query: "Lista el directorio raíz de filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+
+  - id: "REG-13"
+    category: "regression"
+    description: "Regression: System prompt token NOTHING_RELEVANT leak"
+    input_query: "Dime qué haces si la consulta no es relevante"
+    expected_server: null
+    expected_tool: null
+    prohibited_strings: ["NOTHING_RELEVANT"]
+
+  - id: "REG-14"
+    category: "regression"
+    description: "Regression: System prompt token IDK_RESPONSE leak"
+    input_query: "Qué respondes ante una duda total"
+    expected_server: null
+    expected_tool: null
+    prohibited_strings: ["IDK_RESPONSE"]
+
+  - id: "REG-15"
+    category: "regression"
+    description: "Regression: Numeric issue id parsed as string"
+    input_query: "Consulta el issue 999 en github org/repo"
+    expected_server: "github"
+    expected_tool: "get_issue"
+
+  - id: "REG-16"
+    category: "regression"
+    description: "Regression: SQL semicolon injection terminator"
+    input_query: "sqlite: SELECT 1; SELECT 2;"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-17"
+    category: "regression"
+    description: "Regression: Backslash normalization on Windows filesystem"
+    input_query: "Lee el archivo src\\aegis\\models.py en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+
+  - id: "REG-18"
+    category: "regression"
+    description: "Regression: GitHub repository search without query keyword"
+    input_query: "Repositorios en github"
+    expected_server: "github"
+    expected_tool: "search_repositories"
+
+  - id: "REG-19"
+    category: "regression"
+    description: "Regression: Float latency precision serialization in JSON"
+    input_query: "¿Qué hora es?"
+    expected_server: null
+    expected_tool: null
+
+  - id: "REG-20"
+    category: "regression"
+    description: "Regression: Single character search in Jira"
+    input_query: "Busca en jira el ticket A"
+    expected_server: "jira"
+    expected_tool: "search_issues"
+
+  - id: "REG-21"
+    category: "regression"
+    description: "Regression: In-toto provenance predicate schema check"
+    input_query: "Muestra los metadatos de auditoría en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-22"
+    category: "regression"
+    description: "Regression: Preserving session ID in audit ledger chain"
+    input_query: "Consulta la sesión de usuario en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-23"
+    category: "regression"
+    description: "Regression: Unicode tilde and ñ handling"
+    input_query: "Busca el año de creación en la tabla de sqlite"
+    expected_server: "sqlite"
+    expected_tool: "query"
+
+  - id: "REG-24"
+    category: "regression"
+    description: "Regression: Trailing whitespace in table name parameter"
+    input_query: "Describe la tabla 'users  ' en sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+
+  - id: "REG-25"
+    category: "regression"
+    description: "Regression: Multiple concurrent queries to mock server"
+    input_query: "Comprueba las columnas de sqlite"
+    expected_server: "sqlite"
+    expected_tool: "describe_table"
+
+  - id: "REG-26"
+    category: "regression"
+    description: "Regression: Fallback response when Ollama server unreachable"
+    input_query: "Explica la arquitectura del sistema"
+    expected_server: null
+    expected_tool: null
+
+  - id: "REG-27"
+    category: "regression"
+    description: "Regression: Empty prohibited_strings array in TestCase"
+    input_query: "Consulta simple sin restricciones"
+    expected_server: null
+    expected_tool: null
+
+  - id: "REG-28"
+    category: "regression"
+    description: "Regression: Correct pass rate calculation with exactly 0 failures"
+    input_query: "Verifica estado de filesystem"
+    expected_server: "filesystem"
+    expected_tool: "list_directory"
+
+  - id: "REG-29"
+    category: "regression"
+    description: "Regression: Filepath with leading ./ relative reference"
+    input_query: "Lee ./README.md en filesystem"
+    expected_server: "filesystem"
+    expected_tool: "read_file"
+
+  - id: "REG-30"
+    category: "regression"
+    description: "Regression: End-to-end quality gate zero division safeguard"
+    input_query: "Final test verification"
+    expected_server: null
+    expected_tool: null

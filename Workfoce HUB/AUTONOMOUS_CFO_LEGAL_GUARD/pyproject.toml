@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-cfo-legal-guard"
+version = "1.0.0"
+description = "Autonomous Vertical CFO & Legal Guard — Turnkey Micro-SaaS for SMEs"
+readme = "README.md"
+authors = [{ name = "Quantigrade Sovereign AI Team" }]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.30.0",
+    "pydantic>=2.5.0",
+    "rich>=13.0.0",
+    "typer>=0.9.0",
+    "pyyaml>=6.0.1",
+    "pandas>=2.0.0",
+    "requests>=2.31.0",
+    "reportlab>=4.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cfo_core*", "connectors*", "legal_guard*", "reporting*", "hitl*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

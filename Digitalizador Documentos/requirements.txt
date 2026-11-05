@@ -1,0 +1,15 @@
+# Core GUI Framework
+PySide6>=6.8.0
+
+# Data Processing & Spreadsheet Engineering
+pandas>=2.2.0
+openpyxl>=3.1.2
+rapidfuzz>=3.10.0
+
+# OCR Local (OCR for all)
+easyocr>=1.7.1
+python-dotenv>=1.0.1
+
+# Document and Image Processing
+pillow>=10.4.0
+pymupdf>=1.24.0
