@@ -72,8 +72,7 @@ flowchart TD
 
 `ash
 # Clonar el repositorio
-git clone https://github.com/Tardigrado-76/herramientas-b2b.git
-cd herramientas-b2b
+# Repositorio privado enterprise (acceso confidencial bajo acuerdo NDA)
 
 # Consultar el README específico de cada herramienta
 cd "Control de Tokens"
@@ -84,3 +83,4 @@ npm install # o consultar el manual correspondiente
 
 ## 5. Normativas y Seguridad
 Las herramientas cumplen con la normativa europea de protección de datos (**RGPD**), directiva **PSD2** para agregación financiera y estándares de cifrado **TLS 1.3 / AES-256**.
+
