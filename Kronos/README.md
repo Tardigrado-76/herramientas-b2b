@@ -1,46 +1,48 @@
-# Kronos Core Platform - Enterprise Architecture (Cero-Docker Native)
+# Kronos — Sistema de Gobernanza y Productividad Temporal
+### Control de Jornada Legal, Imputación de Proyectos y Auditoría de Eficiencia
 
-## Executive Summary
-Kronos is our highly scalable, fault-tolerant enterprise backend and data orchestration platform. It is designed to handle high-throughput operations with 99.99% availability, serving as the central nervous system for our microservices ecosystem. By employing a robust monorepo structure with Next.js 16 (App Router) for internal dashboards and NestJS 11 for strict, type-safe API endpoints, Kronos ensures rapid iteration cycles and uncompromising data integrity.
+[![Compliance](https://img.shields.io/badge/Compliance-RDL_8%2F2019_%7C_Estatuto_Trabajadores-blue.svg)]()
+[![Security](https://img.shields.io/badge/Security-Audit_Trail_Sealed-green.svg)]()
+[![Architecture](https://img.shields.io/badge/Stack-Fullstack_Microservices-purple.svg)]()
 
-## Native Zero-Docker Architecture
-All services run natively on Windows 11 Enterprise / Node.js v20+ without any Docker daemon or containers:
-- **Backend API (`apps/backend`)**: NestJS 11 running natively on `http://localhost:3001`, featuring Throttler rate-limiting, Helmet security headers, and Supabase Auth Bearer Strategy.
-- **Frontend Dashboard (`apps/frontend`)**: Next.js 16 running natively on `http://localhost:3000` with offline-first localStorage queue and automatic resynchronization.
-- **Persistence Layer**: Direct connection to **Supabase Cloud Pooler** (`aws-0-eu-north-1.pooler.supabase.com`) and in-memory high-speed caching via `@nestjs/cache-manager`.
+---
 
-## High-Level Architecture (C-Level View)
+## 1. Resumen Ejecutivo (Director de Recursos Humanos & Legal Counsel)
+
+**Kronos** es la plataforma enterprise para el registro diario de jornada laboral, control de presencia e imputación de horas a centros de coste y proyectos. Desarrollado en estricta conformidad con el **Real Decreto-ley 8/2019** y la jurisprudencia del Tribunal de Justicia de la Unión Europea (TJUE), garantiza un registro objetivo, fiable y accesible sin invadir la privacidad de los empleados.
+
+---
+
+## 2. Diagrama de Arquitectura Kronos
 
 ```mermaid
-graph TD
-    subgraph Edge & Security [Edge Layer]
-        Gateway[Native Node.js HTTP / CORS Guard]
-        RateLimiter[Throttler / Rate Limiting]
+flowchart LR
+    subgraph Empleados ["CANALES DE REGISTRO"]
+        WEB["Portal Web Responsive"]
+        APP["App Móvil con Geolocalización Opcional"]
+        API["Fichaje por Torniquete / Biometría"]
     end
 
-    subgraph Application Tier [Core Services - Native Node.js]
-        Admin[Next.js 16 - Admin Dashboard :3000]
-        API[NestJS 11 - Core API :3001]
+    subgraph BackendKronos ["NÚCLEO KRONOS (BACKEND)"]
+        AUTH["Control de Acceso RBAC & MFA"]
+        CORE["Motor de Cálculo de Horas & Horas Extra"]
+        PROJ["Módulo de Imputación de Costes a Proyectos"]
     end
 
-    subgraph Data & Persistence [Cloud & Native Memory Layer]
-        Supabase[(Supabase Cloud Pooler - Postgres & Auth)]
-        MemCache[(In-Memory Cache Manager)]
+    subgraph AuditoriaYCompliance ["AUDITORÍA LEGAL"]
+        SEAL["Sellado Criptográfico de Fichajes (Anti-Manipulación)"]
+        INSPEC["Generador de Informes para la Inspección de Trabajo"]
+        HR_REP["Cuadro de Mando de Absentismo y Productividad"]
     end
 
-    Client((Clients & Apps)) --> Gateway
-    Gateway --> RateLimiter
-    
-    RateLimiter --> Admin
-    RateLimiter --> API
-    
-    Admin <--> API
-    
-    API <--> Supabase
-    API <--> MemCache
+    Empleados --> BackendKronos
+    BackendKronos --> AuditoriaYCompliance
 ```
 
-## Quick Start & Verification
-- **Interactive Hub**: Double-click `INICIAR_KRONOS_HUB.bat`.
-- **Automated Test Suite**: Run `npm test` from the monorepo root.
-- **Static Quality Audit**: Run `npm run lint` from the monorepo root.
+---
+
+## 3. Garantías Legales
+
+- **Inmutabilidad de datos**: Una vez registrado un fichaje, no puede ser alterado sin dejar rastro pericial.
+- **Disponibilidad para la Inspección de Trabajo**: Exportación inmediata en formato oficial según requerimientos legales.
+- **Cumplimiento RGPD**: Separación estricta de datos laborales y biométricos; retención obligatoria durante 4 años.

@@ -1,86 +1,75 @@
-﻿# Enterprise B2B Tools Suite
-### AI-Powered Corporate Automation, Context Engineering & Digital Transformation
+# Enterprise B2B Autonomous Solutions & Operational AI Suite
+### Ecosistema B2B de Agentes Autónomos, Finanzas Soberanas y Digitalización Documental
 
-[![Architecture](https://img.shields.io/badge/Architecture-Enterprise_B2B_Automation-blue.svg)]()
-[![Compliance](https://img.shields.io/badge/Compliance-PSD2_%7C_RGPD_%7C_eIDAS-purple.svg)]()
-[![Context Engine](https://img.shields.io/badge/Context_Mode-Dynamic_Efficiency-green.svg)]()
-[![License](https://img.shields.io/badge/License-Proprietary_Enterprise-black.svg)]()
+[![Suite](https://img.shields.io/badge/Suite-Enterprise_B2B_AI-blue.svg)]()
+[![Compliance](https://img.shields.io/badge/Compliance-RGPD_%7C_DORA_%7C_Estatuto_Trabajadores-purple.svg)]()
+[![Productivity](https://img.shields.io/badge/Productivity-85%25_Automation-green.svg)]()
+[![Security](https://img.shields.io/badge/Security-Zero_Trust_Architecture-red.svg)]()
 
 ---
 
 ## 1. Resumen Ejecutivo (C-Level & Strategic ROI)
 
-La suite **Enterprise B2B Tools** agrupa un conjunto de herramientas y microservicios diseñados para acelerar la transformación digital, optimizar la carga cognitiva de contextos LLM y automatizar procesos contables, documentales y de RRHH en medianas y grandes empresas.
+La plataforma **Herramientas B2B** integra las cuatro soluciones críticas para la modernización, eficiencia operativa y automatización segura de procesos de negocio corporativos y PYMEs reguladas:
 
-### Matriz de Decisión para la Dirección
+1. **CFO Director Financiero Autónomo**: Automatización end-to-end de cierres contables mensuales, conciliación bancaria, previsión de tesorería y reporting financiero ejecutivo.
+2. **Digitalizador Inteligente de Documentos**: Extracción multimodal de información en facturas, albaranes y contratos con validación de cumplimiento RGPD y trazabilidad pericial (con caso real validado en supply chain).
+3. **Kronos — Sistema de Gobernanza y Productividad Temporal**: Registro horario inmutable y auditoría laboral conforme al RDL 8/2019 y directivas europeas de trabajo.
+4. **Workforce AI Hub**: Orquestador corporativo de agentes autónomos especializados organizados como empleados digitales de alta cualificación.
 
-| Rol Directivo | Desafío B2B Tradicional | Solución B2B Tools Suite | Impacto / ROI Clave |
+### Matriz Estratégica de Impacto Directivo
+
+| Rol Directivo | Desafío Operativo | Solución B2B Suite | Impacto Medible / ROI |
 |---|---|---|---|
-| **CFO / Dirección Financiera** | Conciliación manual de extractos y facturas en múltiples bancos. | **CFO Director Financiero Autónomo** con conectores bancarios y ERP. | Reducción de 85% de horas hombre en cierre fiscal. |
-| **CTO / Head of AI** | Sobrecarga de ventanas de contexto en herramientas de desarrollo e IDEs. | **Control de Tokens (Context Mode)** con poda selectiva de tokens. | Reducción drástica del 60% en consumo de tokens. |
-| **COO / Operaciones** | Procesamiento manual de albaranes, nóminas y contratos físicos. | **Digitalizador Documentos** con OCR neuronal e ingestión automática. | Procesamiento documental en segundos con 99.4% precisión. |
-| **CHRO / Talento** | Dispersión de tareas y asignación ineficiente de capacidades híbridas. | **Workforce HUB** y **Kronos** para orquestación de fuerza laboral. | Trazabilidad completa de tareas y productividad laboral. |
+| **CEO / Dirección General** | Cuellos de botella en operaciones manuales y altos costes de estructura. | Despliegue de agentes autónomos colaborativos con supervisión Human-in-the-Loop. | +320% en capacidad de procesamiento sin incrementar plantilla fija. |
+| **CFO (Director Financiero)** | Cierres mensuales lentos (10-15 días) y errores en conciliación bancaria. | **CFO Autónomo** conectado a ERP y extractos bancarios multi-entidad. | Cierre contable en < 4 horas; 0 discrepancias de caja. |
+| **COO (Operaciones / Supply Chain)** | Cientos de facturas y albaranes en papel/PDF procesados a mano con retrasos. | **Digitalizador Documentos** con OCR soberano y validación de metadatos. | -88% coste por documento procesado; ciclo de pago acelerado. |
+| **CISO / DPO (Privacidad & Legal)** | Fuga de datos personales y no conformidad RGPD en facturación y contratos. | Blindaje perimetral, anonimización automática de PII y sellado SHA-256. | 100% de evidencia auditable; riesgo de sanción suprimido. |
 
 ---
 
-## 2. Diagrama de Arquitectura de la Suite B2B
+## 2. Diagrama de Arquitectura Global B2B
 
-`
+```mermaid
 flowchart TD
-    subgraph CorePlatform ["CAPA 0: OPTIMIZACIÓN & CONTROL DE CONTEXTO"]
-        TOKENS["Control de Tokens (Context Mode)\nOptimizador Dinámico de Ventanas de Contexto"]
+    subgraph CanalesEntrada ["FUENTES & CANALES EMPRESARIALES"]
+        DOC["Documentos Físicos / Facturas PDF"]
+        ERP["ERP Corporativo (SAP / Navision / Odoo)"]
+        BANK["Banca Electrónica (CSB43 / Open Banking)"]
+        TASK["Gestión de Tareas y Procesos Operativos"]
     end
 
-    subgraph BusinessIntelligence ["CAPA 1: FINANZAS & DOCUMENTACIÓN INTELIGENTE"]
-        CFO["CFO Director Financiero Autónomo\n(Conciliación Bancaria & Fiscalidad PYME)"]
-        DOCS["Digitalizador Documentos\n(Extracción Neuronal & Clasificación)"]
-        D3D["Diseño 3D (3D Design Core)\n(Modelado & Visualización B2B)"]
+    subgraph ModulosB2B ["ECOSISTEMA DE MOTORES B2B AUTÓNOMOS"]
+        DIG["Digitalizador Inteligente de Documentos\n(OCR Multimodal + Validación RGPD)"]
+        CFO["CFO Autónomo para PYMEs\n(Cierre Mensual + Conciliación + Tesorería)"]
+        KRO["Kronos\n(Productividad, Jornada & Auditoría Laboral)"]
+        WFH["Workforce AI Hub\n(Malla de Agentes Especializados con Human-in-the-Loop)"]
     end
 
-    subgraph OperationsWorkforce ["CAPA 2: FUERZA LABORAL & TIEMPO REAL"]
-        KRONOS["Kronos Platform\n(Gestión Temporal & Productividad)"]
-        HUB["Workforce HUB\n(Plataforma Centralizada de Servicios B2B)"]
+    subgraph CapaSeguridadYGobernanza ["GOBERNANZA, AUDITORÍA & COMPLIANCE"]
+        HITL["Panel de Aprobación Humana (Human-in-the-Loop)"]
+        LEDGER["Ledger Criptográfico Inmutable (SHA-256)"]
+        REP["Cuadros de Mando Ejecutivos para C-Levels"]
     end
 
-    CorePlatform --> BusinessIntelligence
-    CorePlatform --> OperationsWorkforce
-`
+    DOC --> DIG
+    BANK --> CFO
+    ERP --> CFO
+    TASK --> KRO
+    TASK --> WFH
+
+    DIG --> CFO
+    DIG --> CapaSeguridadYGobernanza
+    CFO --> CapaSeguridadYGobernanza
+    KRO --> CapaSeguridadYGobernanza
+    WFH --> CapaSeguridadYGobernanza
+```
 
 ---
 
-## 3. Componentes Principales
+## 3. Sub-repositorios Incluidos
 
-1. **Control de Tokens (Context Mode)**:
-   - Motor líder para gestión eficiente de contexto en asistentes de IA y agentes de código.
-   - Poda selectiva de dependencias, reduciendo el ruido en llamadas a modelos fundacionales.
-
-2. **CFO Director Financiero Autónomo para PYMEs**:
-   - Agente contable y financiero para automatizar la reconciliación bancaria, previsión de flujo de caja y preparación de informes fiscales.
-
-3. **Digitalizador Documentos**:
-   - Pipeline de visión artificial y extracción estructurada para facturas, albaranes, escrituras y documentos de identidad.
-
-4. **Diseno3D (3D Design Engine)**:
-   - Motor para renderizado, visualización y gestión de activos 3D industriales y de producto.
-
-5. **Kronos & Workforce HUB**:
-   - Plataforma integral para la monitorización, seguimiento de hitos y orquestación de servicios empresariales.
-
----
-
-## 4. Guía de Despliegue Rápido
-
-`ash
-# Clonar el repositorio
-# Repositorio privado enterprise (acceso confidencial bajo acuerdo NDA)
-
-# Consultar el README específico de cada herramienta
-cd "Control de Tokens"
-npm install # o consultar el manual correspondiente
-`
-
----
-
-## 5. Normativas y Seguridad
-Las herramientas cumplen con la normativa europea de protección de datos (**RGPD**), directiva **PSD2** para agregación financiera y estándares de cifrado **TLS 1.3 / AES-256**.
-
+- [`CFO Director Financiero Autónomo para PYMEs/`](CFO%20Director%20Financiero%20Aut%C3%B3nomo%20para%20PYMEs/README.md): Agente autónomo financiero para reporting ejecutivo, conciliación y tesorería.
+- [`Digitalizador Documentos/`](Digitalizador%20Documentos/README.md): Pipeline soberano de ingestión, extracción OCR, estructuración y verificación RGPD de documentos.
+- [`Kronos/`](Kronos/README.md): Plataforma integral de gestión del tiempo, control de jornada legal e imputación de proyectos.
+- [`Workfoce HUB/`](Workfoce%20HUB/README.md): Malla empresarial de trabajadores digitales coordinados con gobernanza centralizada.
